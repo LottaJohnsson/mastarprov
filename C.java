@@ -54,9 +54,9 @@ public class C {
                 System.out.print(chessboard[i][j] + " ");
             }
             System.out.println();
-        } */
+        }
         
-        /* System.out.println();
+        System.out.println();
         System.out.println(); */
 
     }
@@ -90,13 +90,13 @@ public class C {
             boolean reachedEnd = true;
             
             //System.out.println("pushing " + row + " " + col + "\n");
-            System.out.println("current square " + row + " "+ col);
+         /*    System.out.println("current square " + row + " "+ col);
             for (int i = 0; i <moves.length; i++) {
                 if(isLegalMove(moves[i][0], moves[i][1])){
                     System.out.println("possible moves " + moves[i][0] + " " + moves[i][1] + " visited " + visited[moves[i][0]][moves[i][1]]);
                 }
             }
-            System.out.println();
+            System.out.println(); */
         
 
             for (int i = 0; i <moves.length; i++) {
@@ -112,19 +112,25 @@ public class C {
                       
 
                     else{ //visited square
+                       /*  if (chessboard[moves[i][0]][moves[i][1]] == chessboard[row][col]){
+                            System.out.println("hhmm " + chessboard[moves[i][0]][moves[i][1]] + " " + chessboard[row][col]);
+                            //return false;
+                        }
+                 */
 
                         if (chessboard[moves[i][0]][moves[i][1]] == 'X') {
                             if (chessboard[row][col] == 'X'){
-                                //System.out.println("Ahaaaaaa X");
+                                System.out.println("Ahaaaaaa X");
                             // return false;
                             }
                             colorPath(1, path);
                             path = new Stack<pair>();
                             reachedEnd = false;
                         }
-                        else if (chessboard[moves[i][0]][moves[i][1]] == '0'){
-                            if (chessboard[row][col] == '0'){
-                                //System.out.println("Ahaaaaaa O");
+                        else if (chessboard[moves[i][0]][moves[i][1]] == 'O'){
+                            //System.out.println("cb " + chessboard[row][col]);
+                            if (chessboard[row][col] == 'O'){
+                               System.out.println("Ahaaaaaa O");
                                 //return false;
                             }
                             colorPath(0, path);
@@ -136,7 +142,7 @@ public class C {
                 }   
             }
             if (reachedEnd){ //if no legal moves we have reached an end point,
-                System.out.println("reached end");
+                //System.out.println("reached end");
                 colorPath(0, path);
                 path = new Stack<pair>();
             }    
@@ -190,9 +196,9 @@ public class C {
     }    
 
     public static void main(String[] args){
-        int KMoves = 1;
-        int IMoves = 1;
-        int size= 4 ;
+        int KMoves = 2;
+        int IMoves = 5;
+        int size= 9 ;
         C chessboardGenerator = new C(KMoves, IMoves, size);
         char[][] chessboard = chessboardGenerator.createChessboard();
         if (chessboard == null){

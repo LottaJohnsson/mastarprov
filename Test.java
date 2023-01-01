@@ -12,7 +12,7 @@ public class Test{
     }
 
     public boolean testChess(int size, int iMoves, int kMoves){
-        ChessboardGenerator chess = new ChessboardGenerator(iMoves, kMoves, size);
+        C chess = new C(iMoves, kMoves, size);
         char[][] chessboard = chess.createChessboard();
 
         for (int i = 0; i <size; i++){
@@ -22,6 +22,7 @@ public class Test{
                     if (possibleMoves[k][0] >= 0 && possibleMoves[k][0] < size && possibleMoves[k][1] >= 0 && possibleMoves[k][1] < size){
                         if (chessboard[possibleMoves[k][0]][possibleMoves[k][1]] == chessboard[i][j]){
                             System.out.println("x = " + i + " y = " + j );
+                            System.out.println("crash at x = " + possibleMoves[k][0] + " y = " + possibleMoves[k][1] );
                             System.out.println();
                             printChess(chessboard);
                             return false;
@@ -39,12 +40,13 @@ public class Test{
     public static void main(String[] args) {
         Test test = new Test();
 
-        int n = 8;
+        int n = 100;
         for (int i = 2; i <= n; i++) {
             for (int j=1; j<i-1; j++ ){
                 for (int k = 1; k<i-1; k++){
                     if (!test.testChess(i, j, k)){
                         System.out.println("size = " + n + " iMoves = " + j + " kMoves = " + k);
+                        System.out.println();
                     }
                 }
             }
